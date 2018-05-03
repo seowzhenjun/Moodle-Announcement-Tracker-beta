@@ -1,0 +1,49 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-googleplus": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    },
+    "cordova-plugin-buildinfo": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    },
+    "cordova-universal-links-plugin": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    },
+    "cordova-plugin-browsertab": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    },
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "io.cordova.moodletracker"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<div class="fullScreen" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <mat-card-title>New filter rule</mat-card-title>
+        <mat-card-content>
+            <mat-form-field>
+                <input matInput placeholder="From" [(ngModel)]="from">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Subject" [(ngModel)]="subject">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Email address" type="email" [(ngModel)]="email">
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button color="primary" (click)="newFilterRule()">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

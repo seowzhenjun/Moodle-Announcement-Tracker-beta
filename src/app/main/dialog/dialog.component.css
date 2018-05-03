@@ -1,0 +1,12 @@
+.font-11{
+    font-size : 13px;
+    padding-bottom: 10px;
+}
+
+::ng-deep .mat-form-field{ 
+    width:100% !important; 
+}
+
+::ng-deep .mat-input-underline{
+    display : none;
+}

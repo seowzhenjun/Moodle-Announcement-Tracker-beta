@@ -1,0 +1,12 @@
+.userImg {
+    background-position: center center;
+    background-size: 40px 40px;
+}
+
+.sidebar{
+    width:80vw;
+}
+
+.word-pad{
+    padding-left : 1em;
+}

@@ -1,0 +1,20 @@
+<mat-toolbar *ngIf="!highlighted" color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign=" center">
+    <button mat-icon-button (click)="toggleMenu()" fxLayoutAlign="center center"><mat-icon fxLayoutAlign="center center">menu</mat-icon></button>
+    <span style="padding-left: 1em">{{title}}</span>
+  </div>
+    <button *ngIf="_service.title=='Inbox'" mat-icon-button fxLayoutAlign="center center" [matMenuTriggerFor]="menu"><mat-icon fxLayoutAlign="center center">more_vert</mat-icon></button>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu" yPosition="below">
+  <mat-checkbox color="primary" (change)="showChange($event)" style="padding-left: 0.5em">Only show important emails</mat-checkbox>
+</mat-menu>
+
+<mat-toolbar *ngIf="highlighted" class="highlighted" fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-icon-button fxLayoutAlign="center center" class="lightColor" (click)="cancelHighlight()"><mat-icon fxLayoutAlign="center center">arrow_back</mat-icon></button>
+  <button mat-icon-button *ngIf="!filterList" fxLayoutAlign="center center" class="lightColor" (click)="updateHighlightedEmail()"><mat-icon fxLayoutAlign="center center">{{star}}</mat-icon></button>
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="filterList">
+    <button mat-icon-button fxLayoutAlign="center center" class="lightColor" (click)="deleteFilter()"><mat-icon fxLayoutAlign="center center">delete</mat-icon></button>
+    <button mat-icon-button fxLayoutAlign="center center" class="lightColor" (click)="editCurrentFilter()"><mat-icon fxLayoutAlign="center center">mode_edit</mat-icon></button>
+  </div>
+</mat-toolbar>

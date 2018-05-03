@@ -1,0 +1,17 @@
+.mat-toolbar-multiple-rows{
+    max-height : 45px;
+    min-height : 40px;
+}
+
+.highlighted{
+    background-color: rgb(51, 51, 51);
+}
+
+.lightColor{
+    color: rgba(255,255,255,1);
+}
+
+.mat-menu-content.ng-trigger.ng-trigger-fadeInItems{
+    padding-left : 8px;
+    padding-right: 8px;
+}

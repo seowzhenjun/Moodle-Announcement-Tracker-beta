@@ -1,0 +1,40 @@
+.subtitle{
+  opacity: 0.5;
+}  
+
+mat-list-item{
+  border-bottom : 1px solid rgba(128,128,128,.1);
+}
+
+.table{
+  height : calc(100vh - 56px);
+}
+
+.matList{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.selected{
+  background-color : rgba(211,211,211,0.7);
+}
+
+.material-icons.md-14 { width: 16px; height: 14px; font-size: 11px; }
+
+.spinner{
+  position:absolute;
+  z-index: 3;
+  margin-top: 1em;
+}
+
+.dc{
+  background-color: lightgrey;
+}
+
+.dcAlert{
+  font-weight: bold;
+}

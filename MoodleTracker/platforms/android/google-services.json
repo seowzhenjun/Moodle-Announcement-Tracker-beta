@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "115491863039",
+    "firebase_url": "https://moodle-announcement-trac-347e7.firebaseio.com",
+    "project_id": "moodle-announcement-trac-347e7",
+    "storage_bucket": "moodle-announcement-trac-347e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115491863039:android:639d241b494e6599",
+        "android_client_info": {
+          "package_name": "io.cordova.moodletracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115491863039-cddbp55t6nrse84vv0hdk4kf762rovri.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.cordova.moodletracker",
+            "certificate_hash": "da34cf8e90bb2bbd05d73c127ae2ca9baeb5726e"
+          }
+        },
+        {
+          "client_id": "115491863039-tcv1dp4q1l3ratoc7vrs3u0rktf5vle2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.cordova.moodletracker",
+            "certificate_hash": "a928511fc44f65ca1f05e2f93aa2a154881db40e"
+          }
+        },
+        {
+          "client_id": "115491863039-5pg6f5sdgeg696rh8fq85golnk53lm92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9XoFvlVV2FxKdqGFlDxnt7kov2TAUrrg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115491863039-5pg6f5sdgeg696rh8fq85golnk53lm92.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,12 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Moodle Announcement Tracker",
+  "short_name": "Moodle Announcement Tracker",
+  "version": "io.cordova.moodletracker",
+  "description": "App dedicated to Monash University students to help keep track of their important emails.",
+  "author": "ZhenJun Seow",
+  "icons": [],
+  "start_url": "index.html",
+  "theme_color": "#283593"
+}

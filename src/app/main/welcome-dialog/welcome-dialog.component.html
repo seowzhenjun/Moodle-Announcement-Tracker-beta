@@ -1,0 +1,20 @@
+<h3 mat-dialog-title>
+    Getting Started
+</h3>
+<mat-dialog-content>
+    Welcome! To help you get started quickly, follow the 'Getting Started' 
+    tutorial now to understand how the app works!
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="column" fxLayoutAlign=" none">
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+        <button mat-raised-button color="primary" mat-dialog-close>
+            Skip
+        </button>
+        <button mat-raised-button color="primary" mat-dialog-close (click)="getStarted()">
+            Get started now
+        </button>
+        <br/>
+    </div>
+    <br/>
+    <mat-checkbox color="primary" style="font-size:0.7em">Don't show this message again</mat-checkbox>
+</mat-dialog-actions>

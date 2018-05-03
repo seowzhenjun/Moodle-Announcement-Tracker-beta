@@ -1,0 +1,41 @@
+<div class="currentFilter">
+    <div class="searchHeader">
+        <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+        </mat-form-field>
+    </div>
+
+    <mat-table #table [dataSource]="currentFilterList" matSort>
+        <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="from">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> From </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.from}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="subject">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Subject </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.subject}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row class="row" *matRowDef="let row; columns: displayedColumns;"
+        [ngClass] = "currentIndex.indexOf(row.position) !== -1 ? 'selected row' : 'row'" 
+        (contextmenu)='onContextMenu($event,row)'></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator
+                    [length]="length"
+                    [pageSize]="10"
+                    [pageSizeOptions]="[5, 10, 20]"
+                    [showFirstLastButtons]="true">
+    </mat-paginator>
+</div>

@@ -1,0 +1,39 @@
+<mat-dialog-content>
+  <div class="font-11" *ngFor="let element of data">
+    <mat-form-field>
+      <input matInput placeholder="From" [(ngModel)]="element.from">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email address" [(ngModel)]="element.email">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Subject" matTextareaAutosize matAutosizeMinRows="1"
+      matAutosizeMaxRows="5" [(ngModel)]="element.subject"></textarea>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutAlign=" none">
+      <mat-checkbox color="primary" fxFlexAlign="center" style="padding-right: 1em" (change)="checkBoxChange($event,element)"></mat-checkbox>
+      <mat-form-field>
+          All emails from this 
+          <mat-select style="width:30vw" [(value)]="selected">
+              <mat-option value="from">sender</mat-option>
+              <mat-option value="email">email address</mat-option>
+              <mat-option value="subject">subject line</mat-option>
+          </mat-select>
+          <br/>
+          are important
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between none">
+  <button mat-icon-button fxLayoutAlign="center center">
+    <span matTooltip="Edit the keywords above to let the app know what would you like to hear from. Use 'any' to indicate no filter is required for the particular column."
+      matTooltipPosition="after">
+      <mat-icon fxLayoutAlign="center center">help_outline</mat-icon></span>
+  </button>
+  <button mat-raised-button color="primary" mat-dialog-close (click)="cancel()">Cancel</button>
+  <button mat-raised-button color="primary" mat-dialog-close (click)="markAsImportant()">Ok</button>
+</mat-dialog-actions>

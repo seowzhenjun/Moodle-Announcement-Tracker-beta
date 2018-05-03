@@ -1,0 +1,7 @@
+.feedbackCard{
+    height : calc(100vh - 56px);
+}
+
+.mat-select{
+    width : 70vw;
+}

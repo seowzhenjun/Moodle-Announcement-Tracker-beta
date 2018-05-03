@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.moodletracker" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Moodle Announcement Tracker</name>
+    <description>
+        App dedicated to Monash University students to help keep track of their important emails.
+    </description>
+    <author email="zjseo1@student.monash.edu">
+        ZhenJun Seow
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <universal-links>
+        <host name="https://px59t.app.goo.gl" scheme="https" />
+        <host name="moodle-announcement-trac-347e7.firebaseapp.com" scheme="https">
+            <path url="/__/auth/callback" />
+        </host>
+    </universal-links>
+    <hook src="scripts/prepareAngular2App.js" type="before_prepare" />
+    <preference name="AndroidLaunchMode" value="singleTask" />
+    <preference name="StatusBarBackgroundColor" value="#283593" />
+    <preference name="PlayServicesVersion" value="11.0.1" />
+</widget>

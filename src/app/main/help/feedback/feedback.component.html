@@ -1,0 +1,84 @@
+<div class="feedbackCard">
+    <mat-card class="feedbackCard">
+        <mat-card-header>
+            <mat-card-title>Thank you for liking our app! We hope it help you to keep track of your important email more efficiently.</mat-card-title>
+            <mat-card-subtitle>We would like to hear from you to help us improve further. So, feel free to drop in any suggestion, bug you've found, or any feature you would like to see!</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-divider></mat-divider>
+            <br/>
+            <form [formGroup]="feedbackForm">
+                <p>What would you like to let us know?</p>
+                <mat-form-field>
+                    <mat-select formControlName="feedbackType">
+                        <mat-option *ngFor="let type of feedbackType" [value]="type.value">
+                            {{type.description}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div *ngIf="feedbackForm.get('feedbackType').value=='bug'">
+                    <p>What kind of bug did you find?</p>
+                    <mat-form-field>
+                        <mat-select formControlName="bugType" multiple>
+                            <mat-option *ngFor="let type of bugType" [value]="type.description">
+                                {{type.description}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <p>How would you rate the severity of the bug?</p>
+                    <mat-form-field>
+                        <mat-select formControlName="severity">
+                            <mat-option *ngFor="let type of severity" [value]="type.value">
+                                {{type.description}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <p>We're sorry to hear that... It would be great if you can provide us with more detail so we can fix it ASAP.</p>
+                    <mat-form-field>
+                        <textarea matInput formControlName="bugDescription" placeholder="Description of the bug..." matTextareaAutosize matAutosizeMinRows="5"
+                        matAutosizeMaxRows="10"></textarea>
+                    </mat-form-field>
+                </div>
+                
+                <div *ngIf="feedbackForm.get('feedbackType').value=='feature'">
+                    <p>We're always trying to make your life easier, and the best way to do that is you letting us know what we should do!</p>
+                    <mat-form-field>
+                        <textarea matInput formControlName="featureDescription" placeholder="Description of the feature..." matTextareaAutosize matAutosizeMinRows="5"
+                        matAutosizeMaxRows="10"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="feedbackForm.get('feedbackType').value=='suggestion'">
+                    <p>If you have any thoughts on how the app is currently working, do not hesitate to tell us!</p>
+                    <mat-form-field>
+                        <textarea matInput formControlName="suggestionDescription" placeholder="Any suggestion you like us to know..." matTextareaAutosize matAutosizeMinRows="10"
+                        matAutosizeMaxRows="20"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="feedbackForm.get('feedbackType').value=='feedback'">
+                    <p>Tell us how this app has helped you to not missed any important email anymore!</p>
+                    <mat-form-field>
+                        <textarea matInput formControlName="feedbackDescription" placeholder="Any feedback you like us to know..." matTextareaAutosize matAutosizeMinRows="10"
+                        matAutosizeMaxRows="20"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="feedbackForm.get('feedbackType').value=='other'">
+                    <p>Anything that you have in your mind that doesn't fall into the above categories shall go here</p>
+                    <mat-form-field>
+                        <textarea matInput formControlName="otherDescription" placeholder="Anything you have in mind..." matTextareaAutosize matAutosizeMinRows="10"
+                        matAutosizeMaxRows="20"></textarea>
+                    </mat-form-field>
+                </div>
+            </form>
+            <mat-checkbox color="primary" (change)="stayAnonymous=$event.checked" (click)="show()">I want to stay anonymous</mat-checkbox>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="sendFeedback()">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

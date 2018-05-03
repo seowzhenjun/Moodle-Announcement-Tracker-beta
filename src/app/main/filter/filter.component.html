@@ -1,0 +1,10 @@
+<div class="filter">
+    <mat-list dense>
+        <mat-list-item (click)="newFilter()">Create new filter</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['currentFilter']">Show current filter lists</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['keywordSuggest']">Keywords suggestion</mat-list-item>
+        <mat-divider></mat-divider>
+    </mat-list>
+</div>

@@ -1,0 +1,7 @@
+.emailDetail{
+    height : calc(100vh - 56px);
+}
+
+::ng-deep .mat-card{
+    height : calc(100vh - 56px);
+}

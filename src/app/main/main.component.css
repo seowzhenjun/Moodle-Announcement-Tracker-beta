@@ -1,0 +1,10 @@
+#sidenav { 
+    width : 50vw;
+    z-index : 3;
+}
+
+.topbar{
+    position: sticky;
+    top : 0px;
+    z-index : 1;
+}
