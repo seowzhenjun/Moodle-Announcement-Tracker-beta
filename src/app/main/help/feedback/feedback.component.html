@@ -11,7 +11,7 @@
                 <p>What would you like to let us know?</p>
                 <mat-form-field>
                     <mat-select formControlName="feedbackType">
-                        <mat-option *ngFor="let type of feedbackType" [value]="type.value">
+                        <mat-option *ngFor="let type of feedbackType" [value]="type.value" placeholder="Select one">
                             {{type.description}}
                         </mat-option>
                     </mat-select>

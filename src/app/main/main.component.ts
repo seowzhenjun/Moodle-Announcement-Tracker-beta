@@ -82,6 +82,9 @@ export class MainComponent{
           case '/main/filter/keywordSuggest':
             this._service.title = 'Keyword Suggestion';
             break;
+          case '/main/filter/currentFilter':
+            this._service.title = 'My Filter';
+            break;
           default:
             break;
         }

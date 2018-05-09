@@ -23,7 +23,7 @@ mat-list-item{
   background-color : rgba(211,211,211,0.7);
 }
 
-.material-icons.md-14 { width: 16px; height: 14px; font-size: 11px; }
+.material-icons.md-14 { width: 16px; height: 16px; font-size: 14px; }
 
 .spinner{
   position:absolute;

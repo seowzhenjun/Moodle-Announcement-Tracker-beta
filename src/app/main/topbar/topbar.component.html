@@ -4,6 +4,7 @@
     <span style="padding-left: 1em">{{title}}</span>
   </div>
     <button *ngIf="_service.title=='Inbox'" mat-icon-button fxLayoutAlign="center center" [matMenuTriggerFor]="menu"><mat-icon fxLayoutAlign="center center">more_vert</mat-icon></button>
+    <button *ngIf="_service.title=='My Filter'" mat-icon-button fxLayoutAlign="center center" (click)="addNewFilter()"><mat-icon fxLayoutAlign="center center">add</mat-icon></button>
 </mat-toolbar>
 
 <mat-menu #menu="matMenu" yPosition="below">

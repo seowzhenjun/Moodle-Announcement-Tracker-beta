@@ -160,6 +160,22 @@ export class TopbarComponent implements OnInit {
     // this._service.sendRemoveFilter();
     this.cancelHighlight();
   }
+
+  addNewFilter(){
+    let key : dialogList[] = [{
+      from : '',
+      subject : '',
+      id      : Date.now().toString(),
+      email   : '',
+      ignoreOther : false
+    }];
+    this.fileNameDialogRef = this.dialog.open(DialogComponent, {
+      data : key,
+      autoFocus: false,
+      maxWidth : '90vw',
+      width : '90vw'
+    });
+  }
 }
 
 export interface dialogList {

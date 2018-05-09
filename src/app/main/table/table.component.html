@@ -4,7 +4,7 @@
   </button>
 </div>
 <div class="table">
-  <mat-list dense style="padding-top: 0px">
+  <mat-list style="padding-top: 0px">
     <mat-list-item  class="dc" *ngIf="_service.disconnect" fxLayout="row" fxLayoutAlign="center none">
         <p class="dcAlert">No internet connection</p>
     </mat-list-item>
@@ -14,7 +14,7 @@
       [ngClass] = "currentIndex.indexOf(i) !== -1 ? 'selected matList' : 'matList'"
       (contextmenu)='onContextMenu($event,i,element)' 
       (click)="showDetail(element)">
-          <h3 mat-line fxLayout='row' fxLayoutAlign='space-between none' [style.fontWeight]='element.fontWeight'>
+          <h2 mat-line fxLayout='row' fxLayoutAlign='space-between none' [style.fontWeight]='element.fontWeight'>
             <span>{{element.from}}</span> 
             <div fxLayout="row" fxLayoutAlign=" center">
               <span *ngIf="element.important">
@@ -22,7 +22,7 @@
               </span> 
               <span class='subtitle' [style.opacity]='element.opacity'>{{element.date}}</span>
             </div>
-          </h3>
+          </h2>
           <p mat-line> 
             <span class='subtitle' [style.fontWeight]='element.fontWeight' [style.opacity]='element.opacity'>{{element.subject}}</span>
             <br/> 

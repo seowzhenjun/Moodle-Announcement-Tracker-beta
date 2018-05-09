@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\Zhen Jun\\MoodleAnnoucementTracker\\MoodleTracker\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-as\\values-as.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Zhen Jun\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-tagmanager-15.0.2.aar\\643a977b18ee9c0363a8b6fa9c65f46f\\res\\values-as\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6",
+                        "startColumns": "0,0,0",
+                        "startOffsets": "208,308,427",
+                        "endColumns": "99,118,96",
+                        "endOffsets": "307,426,523"
+                    },
+                    "to": {
+                        "startLines": "3,4,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "159,263,386",
+                        "endColumns": "103,122,100",
+                        "endOffsets": "258,381,482"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Zhen Jun\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-messaging-15.0.2.aar\\9abbee3e3b4f937dd718c5ef344f1409\\res\\values-as\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "205",
+                        "endColumns": "99",
+                        "endOffsets": "304"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "103",
+                        "endOffsets": "154"
+                    }
+                }
+            ]
+        }
+    ]
+}

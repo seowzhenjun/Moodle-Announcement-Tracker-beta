@@ -159,8 +159,12 @@ export class KeywordSuggestionsService {
             this.topNameCount = this.nameCount.slice(0,this.maxShowCount);
             this.topEmailCount = this.emailCount.slice(0,this.maxShowCount);
         }
-        this._service.topSender = this.topNameCount.slice(this.maxShowCount*this.loadCount,this.maxShowCount*(this.loadCount+1));
-        this._service.topEmail = this.topEmailCount.slice(this.maxShowCount*this.loadCount,this.maxShowCount*(this.loadCount+1));
+        // this._service.topSender = this.topNameCount.slice(this.maxShowCount*this.loadCount,this.maxShowCount*(this.loadCount+1));
+        // this._service.topEmail = this.topEmailCount.slice(this.maxShowCount*this.loadCount,this.maxShowCount*(this.loadCount+1));
+        
+        this._service.topSender = this.topNameCount.slice(0,this.maxShowCount*(this.loadCount+1));
+        this._service.topEmail = this.topEmailCount.slice(0,this.maxShowCount*(this.loadCount+1));
+
         this._service.keywordLoading = false;
         this.loadCount++;
     }

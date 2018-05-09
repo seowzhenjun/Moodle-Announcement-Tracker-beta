@@ -21,6 +21,6 @@
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Har xil"</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
     <string msgid="1644004064658032424" name="tagmanager_preview_dialog_button">"Davom etish"</string>
-    <string msgid="2087817895408680879" name="tagmanager_preview_dialog_message">"Oldindan ko‘rish rejimi yangilandi."</string>
-    <string msgid="5216190713680289069" name="tagmanager_preview_dialog_title">"Oldindan ko‘rish"</string>
+    <string msgid="2087817895408680879" name="tagmanager_preview_dialog_message">"Razm solish rejimi yangilandi."</string>
+    <string msgid="5216190713680289069" name="tagmanager_preview_dialog_title">"Razm solish"</string>
 </resources>
