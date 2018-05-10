@@ -6,9 +6,11 @@
             <mat-card-subtitle>{{userDetail.email}}</mat-card-subtitle>
         </mat-card-header>
     </mat-card>
-    <button mat-raised-button color = "primary" fxLayout="row" fxLayoutAlign=" center" (click)="inbox()"><mat-icon>inbox</mat-icon><span class="word-pad">Inbox</span></button>
-    <button mat-raised-button color = "primary" fxLayout="row" fxLayoutAlign=" center" (click)="filter()"><mat-icon>filter_list</mat-icon><span class="word-pad">Filter</span></button>
-    <button mat-raised-button color = "primary" fxLayout="row" fxLayoutAlign=" center" (click)="settings()"><mat-icon>settings</mat-icon><span class="word-pad">Settings</span></button>
-    <button mat-raised-button color = "primary" fxLayout="row" fxLayoutAlign=" center" (click)="help()"><mat-icon>help</mat-icon><span class="word-pad">Help and feedback</span></button>
-    <button mat-raised-button color = "primary" fxLayout="row" fxLayoutAlign=" center" (click)="signOut()"><mat-icon>exit_to_app</mat-icon><span class="word-pad">Logout</span></button>
+    <mat-list>
+        <mat-list-item *ngFor="let element of sidebarList" (click)="navigate(element.name)">
+            <mat-icon>{{element.icon}}</mat-icon>
+            <span class="word-pad">{{element.name}}</span>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
 </div>
