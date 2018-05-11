@@ -1,3 +1,7 @@
 .filter{
     height : calc(100vh - 56px);
 }
+
+.word-pad{
+    padding-left : 1em;
+}

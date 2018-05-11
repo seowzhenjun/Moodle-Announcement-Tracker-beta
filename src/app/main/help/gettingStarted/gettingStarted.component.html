@@ -3,17 +3,40 @@
     <mat-step>
       <ng-template matStepLabel>Welcome!</ng-template>
       <p mat-line>
-        This app aims to help you to keep track of important emails from your faculty. 
-        This is done by comparing the incoming email with the pre-set filter rule which contain keyword that you think is important.
-        The following guide will help you to understand how to setup rules to fully utilise this app to suit your need.
+        It is found that students tend to miss out important <b>Moodle announcement emails</b> that are flooding their inbox along with other emails.<br/><br/>
+        We aim to solve this problem by letting you <b>create your own filter rules</b> and <b>notify you</b> when an incoming email matches those rules.<br/><br/>
+        A filter rule is made up of the following fields : <br/>
+        <b>Sender email address</b><br/>
+        <b>Sender name</b><br/>
+        <b>Email title</b><br/><br/>
+        This tutorial outlines some ways to create your customised rules.<br/>
       </p>
-      <button mat-button matStepperNext>Next</button>
+      <button mat-raised-button color="primary" matStepperNext>Next</button>
     </mat-step>
 
     <mat-step [stepControl]="form">
       <form [formGroup]="form">
-        <ng-template matStepLabel>Bookmarking important emails</ng-template>
+        <ng-template matStepLabel>Method 1 : Bookmarking emails from inbox</ng-template>
         <mat-list dense>
+          Highlight important emails from your inbox by long-pressing the email.<br/>
+          Then, click on the <mat-icon>star</mat-icon> to start creating rules.
+          <mat-toolbar *ngIf="!highlighted" color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutAlign=" center">
+              <button mat-icon-button fxLayoutAlign="center center"><mat-icon fxLayoutAlign="center center">menu</mat-icon></button>
+              <span style="padding-left: 1em">Inbox</span>
+            </div>
+          </mat-toolbar>
+
+          <mat-toolbar *ngIf="highlighted" class="highlighted" fxLayout="row" fxLayoutAlign="space-between center">
+            <button mat-icon-button fxLayoutAlign="center center" class="lightColor" (click)="cancelHighlight()">
+              <span matTooltip="Cancel all the highlights">
+              <mat-icon fxLayoutAlign="center center">arrow_back</mat-icon></span>
+            </button>
+            <button mat-icon-button fxLayoutAlign="center center" class="lightColor" matStepperNext>
+                <mat-icon fxLayoutAlign="center center">star</mat-icon>
+            </button>
+          </mat-toolbar>
+
           <ng-container *ngFor="let element of sampleEmail; let i = index">
             <mat-list-item [ngClass] = "currentIndex.indexOf(i) !== -1 ? 'selected matList' : 'matList'"
             (contextmenu)='onContextMenu($event,i,element)'>
@@ -35,14 +58,14 @@
             <mat-divider></mat-divider>
           </ng-container>
         </mat-list>
-        <div>
+        <!-- <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext [disabled]="currentIndex.length != 3">Next</button>
-        </div>
+        </div> -->
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="form">
+    <!-- <mat-step [stepControl]="form">
       <form [formGroup]="form">
         <ng-template matStepLabel>Click on <mat-icon>star</mat-icon> to edit the filter rule</ng-template>
         <mat-toolbar class="highlighted" fxLayout="row" fxLayoutAlign="space-between center">
@@ -80,11 +103,14 @@
           <button mat-button matStepperPrevious>Back</button>
         </div>
       </form>
-    </mat-step>
+    </mat-step> -->
 
     <mat-step [stepControl]="form">
       <form [formGroup]="form">
         <ng-template matStepLabel>Edit the content to suit your need</ng-template>
+          From each of the emails that you've chosen, you can create a matching rule. Only email that matches all 3 fields from any of the rules will be considered as important.<br/><br/>
+          <b>Note : If you want to ignore any of the field in the rule, use the word 'any'. In this case, incoming email will not be matched against this field.</b><br/><br/>
+          Click 'OK' to save the rules.<br/><br/>
           <mat-card class="dialog">
               <mat-card-content>
                 <div class="font-11" *ngFor="let element of sampleEmail">
@@ -132,17 +158,41 @@
       </form>
     </mat-step>
     
+    <mat-step [stepControl]="form">
+        <form [formGroup]="form">
+          <ng-template matStepLabel>Method 2 : Creating rules from suggested keywords</ng-template>
+          Can't find any important email? We got your back!<br/><br/>
+          We search through your inbox and give you suggestions on sender's name and email address that we think are important to you.<br/><br/>
+          Simply choose the keywords that are important to you and start creating rules!<br/>
+          Below is an example of how it would look like : <br/><br/>
+          <mat-chip-list [multiple]="true">
+              <mat-chip *ngFor="let sender of senderName" [ngClass]="{'is-active': sender.isActive}" 
+              (click)="sender.isActive = !sender.isActive" [color]="warn" 
+              [selected]="sender.isActive" [selectable]="true">
+                  {{sender.name}}
+              </mat-chip>
+              <mat-chip *ngFor="let email of senderEmailAdd" [ngClass]="{'is-active': email.isActive}" 
+              (click)="email.isActive = !email.isActive" [color]="primary" 
+              [selected]="email.isActive" [selectable]="true">
+                  {{email.name}}
+              </mat-chip>
+          </mat-chip-list>
+          <button mat-raised-button color="primary" matStepperNext>Create rules</button>
+        </form>
+    </mat-step>
+
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      You're all set to go!
+      You're all set to go!<br/><br/>
 
-      To see the filter rules that has already been implemented, go to Filter > Show current filter lists.<br/>
+      To revisit this tutorial, go to 'Help > Getting Started'.<br/><br/>
 
-      Next, start setting up rules with some common keywords from your inbox.
+      To see the filter rules that has already been created, go to 'Filter > My filter'.<br/><br/>
 
+      Next, create your first filter rule with some common keywords from your inbox.
       <div>
-        <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button (click)="suggestKeyword()">Set up rules</button>
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" (click)="suggestKeyword()">Set up rules</button>
       </div>
     </mat-step>
   </mat-vertical-stepper>

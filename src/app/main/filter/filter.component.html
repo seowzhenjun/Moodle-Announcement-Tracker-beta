@@ -1,10 +1,19 @@
 <div class="filter">
     <mat-list>
-        <mat-list-item (click)="newFilter()">Create new filter</mat-list-item>
+        <mat-list-item (click)="newFilter()">
+            <mat-icon>add</mat-icon>
+            <span class="word-pad">Create new filter</span>
+        </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item [routerLink]="['currentFilter']">My filter</mat-list-item>
+        <mat-list-item [routerLink]="['currentFilter']">
+            <mat-icon>filter_list</mat-icon>
+            <span class="word-pad">My filter</span>
+        </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item [routerLink]="['keywordSuggest']">Keywords suggestion</mat-list-item>
+        <mat-list-item [routerLink]="['keywordSuggest']">
+            <mat-icon style="transform: scaleY(-1)">wb_incandescent</mat-icon>
+            <span class="word-pad">Keywords suggestion</span>
+        </mat-list-item>
         <mat-divider></mat-divider>
     </mat-list>
 </div>

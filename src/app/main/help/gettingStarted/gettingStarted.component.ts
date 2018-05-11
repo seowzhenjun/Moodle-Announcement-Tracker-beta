@@ -15,8 +15,7 @@ export class GettingStartedComponent implements OnInit {
     facFormGroup: FormGroup;
     secondFormGroup: FormGroup;
     currentIndex : number[] = [-1];
-    facultyList : string[] = ['Engineering','Business','Accounting','Law'];
-    commonWords : string[] = ['Forum','Monash University','Examination'];
+    highlighted : boolean = false;
     selected = "option2";
     
     sampleEmail : emailList[] = [{
@@ -46,6 +45,21 @@ export class GettingStartedComponent implements OnInit {
         keywords : ''
     }];
 
+    senderName = [
+        { name : 'sender1' },
+        { name : 'sender2' },
+        { name : 'sender3' },
+        { name : 'sender4' },
+        { name : 'sender5' }
+    ];
+    senderEmailAdd = [
+        { name : 'sender1@example.com' },
+        { name : 'sender2@example.com' },
+        { name : 'sender3@example.com' },
+        { name : 'sender4@example.com' },
+        { name : 'sender5@example.com' }
+    ];
+
     constructor(
         private fb: FormBuilder,
         private router : Router,
@@ -57,9 +71,9 @@ export class GettingStartedComponent implements OnInit {
     
     ngOnInit(){}
 
-    submit() : void {
-        console.log(this.form.controls['faculty'].value);
-        this._setKey.setKeywords(this.form.controls['faculty'].value);
+    cancelHighlight(){
+        this.currentIndex = [-1];
+        this.highlighted = false;
     }
 
     onContextMenu($event,i,element){
@@ -74,6 +88,12 @@ export class GettingStartedComponent implements OnInit {
         else{
         this.currentIndex.push(i);
         //this.highlightedElement.push(element);
+        }
+        if(this.currentIndex.length > 1){
+            this.highlighted = true;
+        }
+        else{
+            this.highlighted = false;
         }
     }
 
