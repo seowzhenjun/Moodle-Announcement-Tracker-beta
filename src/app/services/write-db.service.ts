@@ -7,6 +7,7 @@ export class WriteDBService {
     database : any = firebase.database();
     keywordRef = this.database.ref('Keyword');
     importantMsgIdRef = this.database.ref('ImportantMsgId');
+    recentMsgRef = this.database.ref('RecentMsg');
 
     constructor(private _service : DataService){}
 
@@ -106,6 +107,15 @@ export class WriteDBService {
             snapshot => {
                 if(snapshot.val()==null){
                     this.importantMsgIdRef.push().set({
+                        userName : obj.email
+                    });
+                }
+            }
+        );
+        this.recentMsgRef.orderByChild('userName').equalTo(obj.email).once('value').then(
+            snapshot => {
+                if(snapshot.val()==null){
+                    this.recentMsgRef.push().set({
                         userName : obj.email
                     });
                 }
