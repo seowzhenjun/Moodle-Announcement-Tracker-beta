@@ -3,6 +3,7 @@
     <mat-spinner [diameter]="24"></mat-spinner>
   </button>
 </div>
+
 <div class="table">
   <mat-list style="padding-top: 0px">
     <mat-list-item  class="dc" *ngIf="_service.disconnect" fxLayout="row" fxLayoutAlign="center none">
@@ -32,3 +33,10 @@
     </ng-container>
   </mat-list> 
 </div>
+
+<mat-card *ngIf="!importantEmailExist && _service.showImportantEmail" class="table" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <img src="../app_logo_bg.png">
+        <p class="bg">You have not bookmarked any email yet</p>
+    </mat-card-content>
+</mat-card>

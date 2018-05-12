@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,11 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.css']
 })
-export class HelpComponent implements OnInit {
-
-  ngOnInit() {
-  }
-
+export class HelpComponent {
   constructor(
     private router : Router,
     private route : ActivatedRoute

@@ -18,8 +18,16 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
+}
 
-  .selected{
+.selected{
     background-color : rgba(211,211,211,0.7);
-  }
+}
+
+.bg{
+    opacity: 0.5;
+}
+
+.mat-card{
+    padding: 0px;
+}

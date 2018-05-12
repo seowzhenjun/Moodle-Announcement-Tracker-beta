@@ -19,7 +19,7 @@
         <ng-template matStepLabel>Method 1 : Bookmarking emails from inbox</ng-template>
         <mat-list dense>
           Highlight important emails from your inbox by long-pressing the email.<br/>
-          Then, click on the <mat-icon>star</mat-icon> to start creating rules.
+          Then, click on the <mat-icon>star</mat-icon> to start creating rules.<br/><br/>
           <mat-toolbar *ngIf="!highlighted" color="primary" fxLayout="row" fxLayoutAlign="space-between center">
             <div fxLayout="row" fxLayoutAlign=" center">
               <button mat-icon-button fxLayoutAlign="center center"><mat-icon fxLayoutAlign="center center">menu</mat-icon></button>
@@ -58,57 +58,13 @@
             <mat-divider></mat-divider>
           </ng-container>
         </mat-list>
-        <!-- <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext [disabled]="currentIndex.length != 3">Next</button>
-        </div> -->
       </form>
     </mat-step>
-
-    <!-- <mat-step [stepControl]="form">
-      <form [formGroup]="form">
-        <ng-template matStepLabel>Click on <mat-icon>star</mat-icon> to edit the filter rule</ng-template>
-        <mat-toolbar class="highlighted" fxLayout="row" fxLayoutAlign="space-between center">
-          <button mat-icon-button fxLayoutAlign="center center" class="lightColor">
-            <span matTooltip="Cancel all the highlights">
-            <mat-icon fxLayoutAlign="center center">arrow_back</mat-icon></span>
-          </button>
-          <button mat-icon-button fxLayoutAlign="center center" class="lightColor" matStepperNext>
-              <mat-icon fxLayoutAlign="center center">star</mat-icon>
-          </button>
-        </mat-toolbar>
-        <mat-list dense>
-          <ng-container *ngFor="let element of sampleEmail; let i = index">
-            <mat-list-item [ngClass] = "currentIndex.indexOf(i) !== -1 ? 'selected matList' : 'matList'"
-            (contextmenu)='onContextMenu($event,i,element)'>
-              <h3 mat-line fxLayout='row' fxLayoutAlign='space-between none'>
-                  <span>{{element.from}}</span> 
-                  <div fxLayout="row" fxLayoutAlign=" center">
-                    <span *ngIf="element.important">
-                      <mat-icon class="material-icons md-14">star</mat-icon>
-                    </span> 
-                    <span class='subtitle'>{{element.date}}</span>
-                  </div>
-                </h3>
-                <p mat-line> 
-                  <span class='subtitle'>{{element.subject}}</span>
-                  <br/> 
-                  <span class='subtitle'>{{element.snippet}}</span>
-                </p>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-          </ng-container>
-        </mat-list>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-        </div>
-      </form>
-    </mat-step> -->
 
     <mat-step [stepControl]="form">
       <form [formGroup]="form">
         <ng-template matStepLabel>Edit the content to suit your need</ng-template>
-          From each of the emails that you've chosen, you can create a matching rule. Only email that matches all 3 fields from any of the rules will be considered as important.<br/><br/>
+          For each of the emails that you've chosen, you can create a matching rule. Only email that matches all 3 fields from any of the rules will be considered as important.<br/><br/>
           <b>Note : If you want to ignore any of the field in the rule, use the word 'any'. In this case, incoming email will not be matched against this field.</b><br/><br/>
           Click 'OK' to save the rules.<br/><br/>
           <mat-card class="dialog">
@@ -152,8 +108,9 @@
                 <button mat-raised-button color="primary" matStepperNext>Ok</button>
               </mat-card-actions>
           </mat-card>
+          <br/>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
         </div>
       </form>
     </mat-step>
@@ -185,11 +142,11 @@
       <ng-template matStepLabel>Done</ng-template>
       You're all set to go!<br/><br/>
 
-      To revisit this tutorial, go to 'Help > Getting Started'.<br/><br/>
+      To revisit this tutorial, go to <b>'Help and Feedback > Getting Started'</b><br/><br/>
 
-      To see the filter rules that has already been created, go to 'Filter > My filter'.<br/><br/>
+      To see the filter rules that has already been created, go to <b>'Filter > My filter'</b><br/><br/>
 
-      Next, create your first filter rule with some common keywords from your inbox.
+      Next, create your first filter rule with some common keywords from your inbox.<br/><br/>
       <div>
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
         <button mat-raised-button color="primary" (click)="suggestKeyword()">Set up rules</button>

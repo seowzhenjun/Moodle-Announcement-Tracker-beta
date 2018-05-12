@@ -38,3 +38,7 @@ mat-list-item{
 .dcAlert{
   font-weight: bold;
 }
+
+.bg{
+  opacity : 0.5;
+}

@@ -57,7 +57,6 @@ export class FeedbackComponent {
     }
 
     sendFeedback(){
-      console.log(this.stayAnonymous);
       let body : any = {};
       let obj = JSON.parse(window.localStorage.getItem('obj'));
       body['feedbackType'] = this.feedbackForm.get('feedbackType').value;

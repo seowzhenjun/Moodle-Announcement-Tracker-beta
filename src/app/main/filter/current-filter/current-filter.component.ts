@@ -17,6 +17,12 @@ export class CurrentFilterComponent {
     currentIndex : number[] = [-1];
     hightlightedFilterList = [];
     message ;
+    loading : boolean = true;
+
+    // Subscription variables
+    getFilterListSubscribe ;
+    isHighlightSubscribe ;
+    removeCurrentFilterSubscribe ;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -28,14 +34,15 @@ export class CurrentFilterComponent {
     ){}
 
     ngOnInit(){
-        this._db.getFilterList().subscribe(
+        this.getFilterListSubscribe = this._db.getFilterList().subscribe(
             data=>{
                 this.currentFilterList.data = data;
                 this.length = this.currentFilterList.data.length;
+                this.loading = false;
             }
         );
 
-        this._service.isHighlight.subscribe(
+        this.isHighlightSubscribe = this._service.isHighlight.subscribe(
             isHighlight=>{
               if(!isHighlight){
                 this.currentIndex = [-1];
@@ -45,7 +52,7 @@ export class CurrentFilterComponent {
             }
         );
 
-        this._service.removeCurrentFilter.subscribe(
+        this.removeCurrentFilterSubscribe = this._service.removeCurrentFilter.subscribe(
             remove => {
                 if(remove){
                     this._db.getFilterList().subscribe(
@@ -68,6 +75,9 @@ export class CurrentFilterComponent {
     
     ngOnDestroy(){
         this._service.sendHighlight(false);
+        this.getFilterListSubscribe.unsubscribe();
+        this.isHighlightSubscribe.unsubscribe();
+        this.removeCurrentFilterSubscribe.unsubscribe();
     }
 
     applyFilter(filterValue: string) {

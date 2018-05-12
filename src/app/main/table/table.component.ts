@@ -29,6 +29,12 @@ export class TableComponent {
   event               : any ;
   welcomeDialogRef    : MatDialogRef<WelcomeDialogComponent>;
   disconnect          : boolean ;
+  importantEmailExist : boolean = false;
+
+  // Subscription variable
+  updateViewSubscribe ;
+  isHighlightSubscribe ;
+  currentEmailListSubscribe ;  
 
   constructor(
     private router      : Router,
@@ -36,18 +42,20 @@ export class TableComponent {
     private _date       : DateService,
     private _http       : GmailhttpService,
     private _db         : ReadDBService,
-    private dialog      : MatDialog) {}
+    private dialog      : MatDialog) 
+    {}
 
   ngOnInit() {
     window.addEventListener('scroll', this.scroll, true); //third parameter
-    this._service.updateView.subscribe(
+
+    this.updateViewSubscribe = this._service.updateView.subscribe(
       view => {
         if(view){
           this.updateView();
         }
       });
 
-    this._service.isHighlight.subscribe(
+    this.isHighlightSubscribe = this._service.isHighlight.subscribe(
       isHighlight=>{
         if(!isHighlight){
           this.currentIndex = [-1];
@@ -57,17 +65,18 @@ export class TableComponent {
       }
     );
 
-    this._service.currentEmailList.subscribe(
+    this.currentEmailListSubscribe = this._service.currentEmailList.subscribe(
       list=>{
         this.list=this.checkUnread(list);
       }
     );
-    
+
     let obj = JSON.parse(window.localStorage.getItem('obj'));
     if(obj !== ""){
       // Use email from local storage if any
       let localStorageEmail = window.localStorage.getItem('email');
       if(localStorageEmail !== null){
+        this.checkImportantMsgExist(JSON.parse(localStorageEmail));
         this.list = this.checkUnread(JSON.parse(localStorageEmail));
       }
       else{
@@ -76,11 +85,18 @@ export class TableComponent {
     }
   }
   
+  ngOnDestroy(){
+    window.removeEventListener('scroll',this.scroll,true);
+    this.updateViewSubscribe.unsubscribe();
+    this.isHighlightSubscribe.unsubscribe();
+    this.currentEmailListSubscribe.unsubscribe();
+  }
+
   ngAfterViewInit(){
-    if(this.event){
-      console.log(this.event);
-      this.event.srcElement.scrollTop = this.scrollTop;
-    }
+    // if(this.event){
+    //   console.log(this.event);
+    //   this.event.srcElement.scrollTop = this.scrollTop;
+    // }
 
     if(window.localStorage.getItem('showTutorial') === 'true'){
       window.localStorage.setItem('showTutorial','false');
@@ -215,11 +231,19 @@ export class TableComponent {
 
   scroll = ($event) => {
     this.event = $event;
-    if($event.srcElement.scrollHeight - $event.srcElement.scrollTop < window.innerHeight*1.2){
+    if($event.srcElement.scrollHeight - $event.srcElement.scrollTop < window.innerHeight*1.2 && !this._service.showImportantEmail){
       if(this.fetch){
         this.fetch = !this.fetch;
         this.listMsg(window.localStorage.getItem('nextPageToken'));
       }
+    }
+  }
+
+  checkImportantMsgExist(emailList){
+    let exist = emailList.findIndex(email => email.important === true);
+    if(exist !== -1){
+      this.importantEmailExist = true;
+      console.log(this.importantEmailExist);
     }
   }
 }
