@@ -22,11 +22,9 @@ export class AuthService {
   ){}
 
   logout(): void {
-    if(this.firstLogin){
-      window.plugins.googleplus.disconnect( 
-        (msg)=> console.log(msg)
-      );
-    }
+    window.plugins.googleplus.disconnect( 
+      (msg)=> console.log(msg)
+    );
     let obj = JSON.parse(window.localStorage.getItem('obj'));
     this._cf.unsubscribe(obj.email,obj.regToken).subscribe();
     window.localStorage.setItem('showTutorial','true');

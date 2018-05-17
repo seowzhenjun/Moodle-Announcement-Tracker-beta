@@ -22,6 +22,7 @@ export class EmailDetailComponent implements OnInit {
   emailHTML : any;
   html      : SafeHtml;
   emailList : any;
+  star      : string;
 
   constructor(
       private route: ActivatedRoute,
@@ -34,6 +35,7 @@ export class EmailDetailComponent implements OnInit {
     this.emailList = this._service.payload;
     if(this._service.payload != ""){
       this.html = this.getBody(this._service.payload.payload);
+      this.star = this._service.payload.important ? 'star' : 'star_border';
     }
     // this._service.currentPayload.subscribe(message => 
     //   {

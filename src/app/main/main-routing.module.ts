@@ -15,10 +15,7 @@ const mainRoutes: Routes = [
     children : [
       {
         path: 'table',
-        component : TableComponent,
-        data : {
-          title : 'My Inbox'
-        }
+        component : TableComponent
       },
       {
         path: 'filter',

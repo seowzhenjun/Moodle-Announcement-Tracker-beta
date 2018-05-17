@@ -1,5 +1,5 @@
 <div class="feedbackCard">
-    <mat-card class="feedbackCard">
+    <mat-card >
         <mat-card-header>
             <mat-card-title>Thank you for liking our app! We hope it help you to keep track of your important email more efficiently.</mat-card-title>
             <mat-card-subtitle>We would like to hear from you to help us improve further. So, feel free to drop in any suggestion, bug you've found, or any feature you would like to see!</mat-card-subtitle>
@@ -51,15 +51,44 @@
                     </mat-form-field>
                 </div>
 
-                <div *ngIf="feedbackForm.get('feedbackType').value=='suggestion'">
-                    <p>If you have any thoughts on how the app is currently working, do not hesitate to tell us!</p>
-                    <mat-form-field>
-                        <textarea matInput formControlName="suggestionDescription" placeholder="Any suggestion you like us to know..." matTextareaAutosize matAutosizeMinRows="10"
-                        matAutosizeMaxRows="20"></textarea>
-                    </mat-form-field>
-                </div>
-
                 <div *ngIf="feedbackForm.get('feedbackType').value=='feedback'">
+                    <p>Rate the following :</p>
+                    <p><b>Ease of setting up filter rules (How easy/hard was it to set up your filter rules?)</b></p>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <p>Hard </p>
+                        <div *ngFor="let element of setUpRating; let i = index">
+                            <mat-icon (click)="changeRating(i,'setUpRating')">{{element}}</mat-icon>
+                        </div>
+                        <p> Easy</p>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <p><b>Clarity of tutorial (How helpful was the tutorial?)</b></p>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <p>Not helpful </p>
+                        <div *ngFor="let element of tutorialRating; let i = index">
+                            <mat-icon (click)="changeRating(i,'tutorialRating')">{{element}}</mat-icon>
+                        </div>
+                        <p> Helpful</p>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <p><b>Accuracy of suggested keywords (Are the keywords we suggest important to you?)</b></p>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <p>Not accurate </p>
+                        <div *ngFor="let element of suggestedKeywordRating; let i = index">
+                            <mat-icon (click)="changeRating(i,'suggestedKeywordRating')">{{element}}</mat-icon>
+                        </div>
+                        <p> Accurate</p>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <p><b>Accuracy of notification (Did we inform you on every important email?)</b></p>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <p>Not accurate </p>
+                        <div *ngFor="let element of notificationRating; let i = index">
+                            <mat-icon (click)="changeRating(i,'notificationRating')">{{element}}</mat-icon>
+                        </div>
+                        <p> Accurate</p>
+                    </div>
+                    <mat-divider></mat-divider>
                     <p>Tell us how this app has helped you to not missed any important email anymore!</p>
                     <mat-form-field>
                         <textarea matInput formControlName="feedbackDescription" placeholder="Any feedback you like us to know..." matTextareaAutosize matAutosizeMinRows="10"
@@ -75,10 +104,11 @@
                     </mat-form-field>
                 </div>
             </form>
-            <mat-checkbox color="primary" (change)="stayAnonymous=$event.checked" (click)="show()">I want to stay anonymous</mat-checkbox>
+            <mat-checkbox color="primary" (change)="stayAnonymous=$event.checked">I want to stay anonymous</mat-checkbox>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button (click)="sendFeedback()">Submit</button>
+            <button mat-raised-button color="primary" *ngIf="!loading" (click)="sendFeedback()">Submit</button>
+            <button mat-raised-button disabled *ngIf="loading" fxLayout="row" fxLayoutAlign="center center"><mat-spinner [diameter]="24"></mat-spinner></button>
         </mat-card-actions>
     </mat-card>
 </div>

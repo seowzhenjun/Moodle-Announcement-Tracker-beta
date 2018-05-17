@@ -76,6 +76,9 @@ export class MainComponent{
           case '/main/help':
             this._service.title = 'Help';
             break;
+          case '/main/gettingStarted':
+            this._service.title = 'Getting Started';
+            break;
           case '/main/help/feedback':
             this._service.title = 'Feedback';
             break;

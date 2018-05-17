@@ -6,11 +6,18 @@
             <mat-card-subtitle>{{userDetail.email}}</mat-card-subtitle>
         </mat-card-header>
     </mat-card>
-    <mat-list>
-        <mat-list-item *ngFor="let element of sidebarList" (click)="navigate(element.name)">
+    <mat-nav-list>
+        <mat-list-item *ngFor="let element of sidebarList" (click)="navigate(element.name)" disableRipple='false'>
             <mat-icon>{{element.icon}}</mat-icon>
             <span class="word-pad">{{element.name}}</span>
             <mat-divider></mat-divider>
         </mat-list-item>
-    </mat-list>
+    </mat-nav-list>
+    <!-- <mat-list>
+        <mat-list-item *ngFor="let element of sidebarList" (click)="navigate(element.name)" disableRipple='false'>
+            <mat-icon>{{element.icon}}</mat-icon>
+            <span class="word-pad">{{element.name}}</span>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list> -->
 </div>

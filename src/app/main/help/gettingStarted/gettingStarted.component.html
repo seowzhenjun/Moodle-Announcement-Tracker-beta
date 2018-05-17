@@ -19,7 +19,9 @@
         <ng-template matStepLabel>Method 1 : Bookmarking emails from inbox</ng-template>
         <mat-list dense>
           Highlight important emails from your inbox by long-pressing the email.<br/>
-          Then, click on the <mat-icon>star</mat-icon> to start creating rules.<br/><br/>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <p>Then, click on the </p><mat-icon>star</mat-icon><p> to start creating rules.</p><br/><br/>
+          </div>
           <mat-toolbar *ngIf="!highlighted" color="primary" fxLayout="row" fxLayoutAlign="space-between center">
             <div fxLayout="row" fxLayoutAlign=" center">
               <button mat-icon-button fxLayoutAlign="center center"><mat-icon fxLayoutAlign="center center">menu</mat-icon></button>

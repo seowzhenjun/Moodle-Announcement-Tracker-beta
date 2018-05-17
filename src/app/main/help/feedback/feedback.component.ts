@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 import { CloudFunctionService } from '../../../services/cloud-function.service';
 
@@ -10,12 +11,12 @@ import { CloudFunctionService } from '../../../services/cloud-function.service';
 })
 export class FeedbackComponent {
 
+  loading : boolean = false;
   feedbackForm: FormGroup;
-  stayAnonymous : boolean = true;
+  stayAnonymous : boolean = false;
   feedbackType = [
     {value : 'bug', description:'Bug'},
     {value : 'feature', description:'Feature request'},
-    {value : 'suggestion', description:'Suggestion'},
     {value : 'feedback', description:'Let us know how we did'},
     {value : 'other', description:'Other'}
   ];
@@ -33,9 +34,22 @@ export class FeedbackComponent {
     {value : 'severe', description : "It's fatal! App cannot function when it occur"},
     {value : 'notSure', description : "I don't know"},
   ];
+
+  setUpRating =['star_border','star_border','star_border','star_border','star_border'];
+  tutorialRating =['star_border','star_border','star_border','star_border','star_border'];
+  suggestedKeywordRating =['star_border','star_border','star_border','star_border','star_border'];
+  notificationRating =['star_border','star_border','star_border','star_border','star_border'];
+  rate = [{
+    setUpRating : 0,
+    tutorialRating : 0,
+    suggestedKeywordRating : 0,
+    notificationRating : 0
+  }];
+
     constructor(
       private _cf : CloudFunctionService,
-      private formbuilder : FormBuilder
+      private formbuilder : FormBuilder,
+      private snackBar : MatSnackBar
     ) {}
 
     ngOnInit(){
@@ -45,18 +59,44 @@ export class FeedbackComponent {
         severity        : '',
         bugDescription  : '',
         featureDescription : '',
-        suggestionDescription : '',
         feedbackDescription : '',
         otherDescription : ''
 
       })
     }
 
-    show(){
-      console.log(this.stayAnonymous);
+    changeRating(ind,ratingType){
+      let rating = ['star_border','star_border','star_border','star_border','star_border'];
+      let index = ind +1 ;
+
+      this.rate[ratingType]=index;
+      
+      for(let i=0; i<index; i++){
+        rating[i] = 'star';
+      }
+
+      for(let i=index;i<rating.length; i++){
+        rating[i] = 'star_border';
+      }
+
+      switch (ratingType){
+        case 'setUpRating':
+          this.setUpRating = rating;
+        break;
+        case 'tutorialRating':
+          this.tutorialRating = rating;
+        break;
+        case 'suggestedKeywordRating':
+          this.suggestedKeywordRating = rating;
+        break;
+        case 'notificationRating':
+          this.notificationRating = rating;
+        break;
+      }
     }
 
     sendFeedback(){
+      this.loading = true;
       let body : any = {};
       let obj = JSON.parse(window.localStorage.getItem('obj'));
       body['feedbackType'] = this.feedbackForm.get('feedbackType').value;
@@ -72,10 +112,14 @@ export class FeedbackComponent {
         case 'feature':
           body['description'] = this.feedbackForm.get('featureDescription').value;
           break;
-        case 'suggestion':
-          body['description'] = this.feedbackForm.get('suggestionDescription').value;
-          break;
         case 'feedback':
+          let overallRating = (this.rate['setUpRating']+this.rate['tutorialRating']+this.rate['suggestedKeywordRating']+this.rate['notificationRating'])/5;
+          overallRating = Math.round( overallRating * 10) / 10;
+          body['setUpRating'] = this.rate['setUpRating'];
+          body['tutorialRating'] = this.rate['tutorialRating'];
+          body['suggestedKeywordRating'] = this.rate['suggestedKeywordRating'];
+          body['notificationRating'] = this.rate['notificationRating'];
+          body['overallRating'] = overallRating;
           body['description'] = this.feedbackForm.get('feedbackDescription').value;
           break;
         case 'other':
@@ -84,6 +128,16 @@ export class FeedbackComponent {
         default :
           break;
       }
-      this._cf.sendFeedback(obj.email,body).subscribe();
+      this._cf.sendFeedback(obj.email,body).subscribe(response=>{
+        this.loading = false;
+        if(response['response'] == 'success'){
+          this.snackBar.open("We've received your feedback, thank you!",null,{duration : 2000});
+        }
+        else {
+          this.snackBar.open("Something went wrong. Please try again later.",null,{duration : 2000});
+        }
+      },err=>{
+        console.log(err);
+      });
     }
 }

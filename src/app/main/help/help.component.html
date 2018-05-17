@@ -1,5 +1,5 @@
 <div class="help">
-    <mat-list>
+    <!-- <mat-list>
         <mat-list-item (click)='gettingStarted()'>
             <mat-icon>school</mat-icon>
             <span class="word-pad">Getting started</span>
@@ -15,5 +15,12 @@
             <span class="word-pad">Send feedback</span> 
         </mat-list-item>
         <mat-divider></mat-divider>
-    </mat-list>
+    </mat-list> -->
+    <mat-nav-list>
+        <mat-list-item *ngFor="let element of navList" (click)="navigate(element.name)" disableRipple='false'>
+            <mat-icon>{{element.icon}}</mat-icon>
+            <span class="word-pad">{{element.name}}</span>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-nav-list>
 </div>

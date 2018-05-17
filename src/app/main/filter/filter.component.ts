@@ -11,7 +11,10 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class FilterComponent{
 
     fileNameDialogRef: MatDialogRef<DialogComponent>;
-
+    navList =[
+        { name : 'My Filter' , icon : 'filter_list'},
+        { name : 'Keywords Suggestion' , icon : 'wb_incandescent'}
+    ]
     constructor(
         private router: Router,
         private route: ActivatedRoute,
@@ -33,6 +36,16 @@ export class FilterComponent{
             width : '90vw'
         });
     }
+    navigate(path){
+        switch(path){
+          case 'My Filter':
+            this.router.navigate(['currentFilter'],{relativeTo:this.route});
+          break;
+          case 'Keywords Suggestion':
+            this.router.navigate(['keywordSuggest'],{relativeTo:this.route});
+          break;
+        }
+      }
 }
 
 export interface dialogList {
