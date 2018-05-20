@@ -50,7 +50,8 @@ export class KeywordSuggestionComponent{
                             email   : keyword.name,
                             subject : 'any',
                             id      : Date.now(),
-                            attribute : keyword.attribute
+                            attribute : keyword.attribute,
+                            useRegex  : true
                         };
                         this.selectedKeywords.push(currentKeyword);
                     }
@@ -69,7 +70,8 @@ export class KeywordSuggestionComponent{
                             email   : 'any',
                             subject : 'any',
                             id      : Date.now(),
-                            attribute : keyword.attribute
+                            attribute : keyword.attribute,
+                            useRegex  : true
                         };
                         this.selectedKeywords.push(currentKeyword);
                     }
@@ -102,4 +104,5 @@ export interface dialogList {
     email       : string;
     id          : number;
     attribute   : string;
+    useRegex    : boolean;
   }

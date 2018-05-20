@@ -25,7 +25,7 @@ export class DialogComponent {
     }
 
     checkBoxChange($event,element){
-      element['ignoreOther'] = $event.checked;
+      element['useRegex'] = $event.checked;
     }
 
     cancel(){

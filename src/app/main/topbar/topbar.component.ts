@@ -120,12 +120,15 @@ export class TopbarComponent implements OnInit {
     let dialogList : dialogList[] = [];
     for(let i=0; i<this.element.length; i++){
       if(!this.element[i].important){
+        if(this.element[i].useRegex === undefined){
+          this.element[i].useRegex = false;
+        }
         let body = {} as dialogList;
         body['from']    = this.element[i].from;
         body['subject'] = this.element[i].subject;
         body['id']      = this.element[i].id;
         body['email']   = this.element[i].email;
-        body['ignoreOther'] = false;
+        body['useRegex'] = this.element[i].useRegex;
         dialogList.push(body);
       }
     }
@@ -167,7 +170,7 @@ export class TopbarComponent implements OnInit {
       subject : '',
       id      : Date.now().toString(),
       email   : '',
-      ignoreOther : false
+      useRegex: false
     }];
     this.fileNameDialogRef = this.dialog.open(DialogComponent, {
       data : key,
@@ -183,5 +186,5 @@ export interface dialogList {
   subject     : string;
   id          : string;
   email       : string;
-  ignoreOther : boolean;
+  useRegex    : boolean;
 }

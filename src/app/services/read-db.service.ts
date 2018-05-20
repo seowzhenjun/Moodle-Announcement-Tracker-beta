@@ -236,6 +236,7 @@ export class ReadDBService {
                                     body['email']= snap.val().from;
                                     body['id'] = childKey;
                                     body['subject']=snap.val().keywords[childKey];
+                                    body['useRegex']=snap.val()['useRegex'][childKey];
                                     filterList.push(body);
                                     i++;
                                 }
@@ -284,4 +285,5 @@ export interface filterList{
     subject : string;
     email   : string;
     id      : string;
+    useRegex: boolean;
 }

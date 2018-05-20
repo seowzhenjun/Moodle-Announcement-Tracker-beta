@@ -82,7 +82,10 @@
                     <textarea matInput placeholder="Subject" matTextareaAutosize matAutosizeMinRows="1"
                     matAutosizeMaxRows="5" [(ngModel)]="element.subject" [ngModelOptions]="{standalone: true}"></textarea>
                   </mat-form-field>
-                  <div fxLayout="row" fxLayoutAlign=" none">
+                  <mat-checkbox color="primary">
+                    <span>Match as long as the word/words in subject appear in title</span>
+                  </mat-checkbox>
+                  <!-- <div fxLayout="row" fxLayoutAlign=" none">
                     <mat-checkbox color="primary"  fxFlexAlign="center" style="padding-right: 1em"></mat-checkbox>
                     <mat-form-field>
                         All emails from this 
@@ -94,7 +97,7 @@
                         <br/>
                         are important
                     </mat-form-field>
-                  </div>
+                  </div> -->
                   <mat-divider></mat-divider>
                   <br/>
                 </div>

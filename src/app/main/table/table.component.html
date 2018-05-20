@@ -5,7 +5,7 @@
 </div>
 
 <div class="table">
-  <mat-nav-list style="padding-top: 0px">
+  <mat-list style="padding-top: 0px">
     <mat-list-item class="dc" *ngIf="_service.disconnect" fxLayout="row" fxLayoutAlign="center none">
         <p class="dcAlert">No internet connection</p>
     </mat-list-item>
@@ -31,7 +31,7 @@
           </p>
       </mat-list-item>
     </ng-container>
-  </mat-nav-list> 
+  </mat-list> 
 </div>
 
 <mat-card *ngIf="!importantEmailExist && _service.showImportantEmail" class="table" fxLayout="column" fxLayoutAlign="center center">

@@ -43,3 +43,11 @@
 ::ng-deep .mat-input-underline{
     display : none;
 }
+
+::ng-deep .mat-checkbox-layout{
+    white-space: normal
+}
+
+::ng-deep .mat-checkbox-layout .mat-checkbox-label{
+    line-height: normal;
+}

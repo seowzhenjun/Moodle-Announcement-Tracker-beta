@@ -117,4 +117,5 @@ export interface filterList {
     from    : string;
     subject : string;
     email   : string;
+    useRegex: boolean;
   }

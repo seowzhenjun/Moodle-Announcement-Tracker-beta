@@ -24,25 +24,30 @@ export class WriteDBService {
                         childSnap=>{
                             for(let i=0;i<keywords.length;i++){
                                 const keywordSubject = set ? keywords[i].subject : null;
+                                const useRegex = set ? keywords[i].useRegex : null;
                                 childSnap.forEach(
                                     snap=>{
                                         if(snap.val()['name']==keywords[i].from && snap.val()['from']==keywords[i].email){
-                                            ref.child(`${snap.key}/keywords`).update({
-                                                [keywords[i].id] : keywordSubject
-                                            })
-                                            .then(()=>{
-                                                ref.child(`${snap.key}/keywords`).once('value',snapshot=>{
-                                                    if(!snapshot.exists()){
-                                                        ref.child(snap.key).remove()
-                                                        .then(()=>{
+                                            ref.child(`${snap.key}/useRegex`).update({
+                                                [keywords[i].id] : useRegex
+                                            }).then(()=>{
+                                                ref.child(`${snap.key}/keywords`).update({
+                                                    [keywords[i].id] : keywordSubject
+                                                })
+                                                .then(()=>{
+                                                    ref.child(`${snap.key}/keywords`).once('value',snapshot=>{
+                                                        if(!snapshot.exists()){
+                                                            ref.child(snap.key).remove()
+                                                            .then(()=>{
+                                                                this._service.sendRemoveFilter();
+                                                            });
+                                                        }
+                                                        else{
                                                             this._service.sendRemoveFilter();
-                                                        });
-                                                    }
-                                                    else{
-                                                        this._service.sendRemoveFilter();
-                                                    }
+                                                        }
+                                                    });
                                                 });
-                                            });
+                                            })
                                             matched = true;
                                         }
                                     
@@ -55,6 +60,9 @@ export class WriteDBService {
                                         name : keywords[i].from,
                                         keywords : {
                                             [keywords[i].id] : keywordSubject
+                                        },
+                                        useRegex : {
+                                            [keywords[i].id] : useRegex
                                         }
                                     }).then(()=>{
                                         newKeywordRef.child('keywords').once('value',snapshot=>{

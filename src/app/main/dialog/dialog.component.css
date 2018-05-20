@@ -10,3 +10,15 @@
 ::ng-deep .mat-input-underline{
     display : none;
 }
+
+.pad-top{
+    padding-top: 0.1em;
+}
+
+::ng-deep .mat-checkbox-layout{
+    white-space: normal
+}
+
+::ng-deep .mat-checkbox-layout .mat-checkbox-label{
+    line-height: normal;
+}

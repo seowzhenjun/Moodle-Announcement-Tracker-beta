@@ -10,8 +10,10 @@
       <textarea matInput placeholder="Subject" matTextareaAutosize matAutosizeMinRows="1"
       matAutosizeMaxRows="5" [(ngModel)]="element.subject"></textarea>
     </mat-form-field>
-
-    <div fxLayout="row" fxLayoutAlign=" none">
+    <mat-checkbox color="primary" (change)="checkBoxChange($event,element)" [(ngModel)]="element.useRegex">
+      <span>Match as long as the word/words in subject appear in title</span>
+    </mat-checkbox>
+    <!-- <div fxLayout="row" fxLayoutAlign=" none">
       <mat-checkbox color="primary" fxFlexAlign="center" style="padding-right: 1em" (change)="checkBoxChange($event,element)"></mat-checkbox>
       <mat-form-field>
           All emails from this 
@@ -23,7 +25,7 @@
           <br/>
           are important
       </mat-form-field>
-    </div>
+    </div> -->
     <mat-divider></mat-divider>
   </div>
 </mat-dialog-content>
